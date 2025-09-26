@@ -1,0 +1,13 @@
+# PDF发票合并工具依赖包
+
+# PDF处理
+PyMuPDF==1.23.14
+
+# 图片处理
+Pillow==10.1.0
+
+# PDF生成
+reportlab==4.0.7
+
+# 路径处理（Python 3.4+内置，但列出以供参考）
+# pathlib - 内置模块

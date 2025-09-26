@@ -1,0 +1,11 @@
+{
+  "input_folder": "input",
+  "output_folder": "output",
+  "description": "PDF发票合并工具配置文件",
+  "settings": {
+    "image_quality": "high",
+    "pdf_zoom_factor": 2.0,
+    "page_margin": 20,
+    "supported_formats": [".png", ".jpg", ".jpeg", ".bmp", ".tiff", ".gif"]
+  }
+}
