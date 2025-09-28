@@ -17,6 +17,7 @@ def show_menu():
     print("="*50)
     print("1. PDF发票合并 - 将PDF发票和查验图片合并成一个PDF")
     print("2. PDF转图片合并 - 将多个PDF转换为图片并排列合并")
+    print("3. 双拼PDF合并 - 将所有文件合并成一个PDF，每页放两个文件")
     print("0. 退出程序")
     print("="*50)
 
@@ -50,6 +51,26 @@ def run_pdf_to_image_merger():
         print(f"❌ 运行PDF转图片合并功能时出错：{e}")
 
 
+def run_dual_layout_merger():
+    """运行双拼PDF合并功能"""
+    try:
+        print("\n🔄 启动双拼PDF合并功能...")
+        
+        # 导入双拼合并器
+        from dual_layout_merger import DualLayoutMerger
+        
+        # 创建合并器实例并运行
+        merger = DualLayoutMerger()
+        merger.process_all_files()
+        
+        print("✅ 双拼PDF合并完成！")
+        
+    except ImportError as e:
+        print(f"❌ 导入双拼合并模块失败：{e}")
+    except Exception as e:
+        print(f"❌ 运行双拼PDF合并功能时出错：{e}")
+
+
 def main():
     """主函数"""
     print("欢迎使用PDF工具集合！")
@@ -58,7 +79,7 @@ def main():
         show_menu()
         
         try:
-            choice = input("\n请选择功能 (0-2): ").strip()
+            choice = input("\n请选择功能 (0-3): ").strip()
             
             if choice == "0":
                 print("\n👋 感谢使用，再见！")
@@ -67,8 +88,10 @@ def main():
                 run_pdf_merger()
             elif choice == "2":
                 run_pdf_to_image_merger()
+            elif choice == "3":
+                run_dual_layout_merger()
             else:
-                print("❌ 无效选择，请输入0-2之间的数字")
+                print("❌ 无效选择，请输入0-3之间的数字")
                 
         except KeyboardInterrupt:
             print("\n\n👋 程序被用户中断，再见！")
@@ -77,7 +100,7 @@ def main():
             print(f"❌ 程序运行出错：{e}")
         
         # 询问是否继续
-        if choice in ["1", "2"]:
+        if choice in ["1", "2", "3"]:
             try:
                 continue_choice = input("\n是否继续使用其他功能？(y/n): ").lower().strip()
                 if continue_choice not in ['y', 'yes', '是']:
